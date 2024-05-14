@@ -1,8 +1,14 @@
-const mysql = require('promise-mysql')
+const { Pool } = require('pg');
 
-const connection = mysql.createConnection({
+const connection = new Pool({
   host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'electrondb'
+  user: 'postgres',
+  password: 'qwerty21',
+  database: 'db_electron'
 })
+
+function getConnection() {
+  return connection
+}
+
+module.exports = { getConnection }
